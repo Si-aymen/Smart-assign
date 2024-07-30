@@ -132,7 +132,7 @@
         margin-bottom: 14px;
         img {
           width: auto;
-          height: 24px;
+          height: 100px;
         }
       }
       padding: 0px 24px;
@@ -256,8 +256,8 @@
   }
   .sidebar-left-secondary,
   .sidebar-left {
-    // top: $topbar-height-mobile;
-    // height: calc(100vh - #{$topbar-height-mobile});
+     top: $topbar-height-mobile;
+     height: calc(100vh - #{$topbar-height-mobile});
   }
   .sidebar-left {
     left: calc(-#{$sidebar-left-width-mobile} - #{$side-clearance});

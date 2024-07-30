@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import {SessionStorageService} from './user/session-storage.service';
+
 
 export interface IMenuItem {
     id?: string;
@@ -14,6 +16,7 @@ export interface IMenuItem {
     sub?: IChildItem[]; // Dropdown items
     badges?: IBadge[];
     active?: boolean;
+    roles?: string[];
 }
 export interface IChildItem {
     id?: string;
@@ -24,6 +27,8 @@ export interface IChildItem {
     icon?: string;
     sub?: IChildItem[];
     active?: boolean;
+    roles?: string[];
+
 }
 
 interface IBadge {
@@ -61,6 +66,16 @@ export class NavigationService {
                 { icon: 'i-Over-Time', name: 'Version 3', state: '/dashboard/v3', type: 'link' },
                 { icon: 'i-Clock', name: 'Version 4', state: '/dashboard/v4', type: 'link' },
             ]
+        },
+                {
+            name: 'Tools',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+            type: 'dropDown',
+            icon: 'i-Administrator',
+            sub: [
+                { icon: 'i-Administrator', name: 'Super admin tools', state: '/tools/superadmin', type: 'link' , roles: ['SUPERADMIN']}
+            ],
+            roles: ['SUPERADMIN']
         },
         {
             name: 'UI kits',
