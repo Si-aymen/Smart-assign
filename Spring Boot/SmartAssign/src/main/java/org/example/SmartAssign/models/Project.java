@@ -18,6 +18,8 @@ public class Project {
     private String id;
     private String name;
     private String description;
+    private Domain domain ;
+    private Status status  ;
     private Date startDate;
     private Date endDate;
 

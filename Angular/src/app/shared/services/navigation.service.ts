@@ -76,6 +76,16 @@ export class NavigationService {
                 { icon: 'i-Administrator', name: 'Super admin tools', state: '/tools/superadmin', type: 'link' }
             ],
         },
+
+        {
+            name: 'Projects',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+            type: 'dropDown',
+            icon: 'i-Folders',
+            sub: [
+                { icon: 'i-Folder-Cloud', name: 'All Projects ', state: '/projects/projects', type: 'link' }
+            ],
+        },
         {
             name: 'UI kits',
             description: 'Lorem ipsum dolor sit amet, consectetur adipisicing.',
