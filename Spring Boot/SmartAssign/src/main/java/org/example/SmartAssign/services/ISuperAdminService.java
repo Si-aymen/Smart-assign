@@ -10,5 +10,11 @@ public interface ISuperAdminService {
    ResponseEntity<StatusMessageResponse> toggleUserBanStatus(String email);
    ResponseEntity<StatusMessageResponse> toggleUserEnabledStatus(String email);
    ResponseEntity<StatusMessageResponse> addRoleToUser(String email, String role);
-    ResponseEntity<StatusMessageResponse> removeRoleFromUser(String email, String role);
+   ResponseEntity<StatusMessageResponse> removeRoleFromUser(String email, String role);
+    Long GetNumberOfusers();
+    Long GetNumberOfDevelopers();
+    Long GetNumberOfPROJECT_MANAGERS();
+    Long GetNumberOfSuper_admin();
+
+
 }

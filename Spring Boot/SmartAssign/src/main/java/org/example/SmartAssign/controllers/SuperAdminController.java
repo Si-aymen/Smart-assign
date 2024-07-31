@@ -41,4 +41,21 @@ public class SuperAdminController {
         return superAdminService.removeRoleFromUser(email, role);
     }
 
+    @GetMapping("/count/users")
+    public Long GetNumberOfUsers() {
+        return superAdminService.GetNumberOfusers();
+    }
+    @GetMapping("/count/Developers")
+    public Long GetNumberOfDevelopers() {
+        return superAdminService.GetNumberOfDevelopers();
+    }
+    @GetMapping("/count/Project_Manager")
+    public Long GetNumberOfProjectManager() {
+        return superAdminService.GetNumberOfPROJECT_MANAGERS();
+    }
+    @GetMapping("/count/Super_admin")
+    public Long GetNumberOfSuperAdmin() {
+        return superAdminService.GetNumberOfSuper_admin();
+    }
+
 }

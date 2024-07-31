@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { PaginatedUsersResponse } from '../../models/user/PaginatedUsersResponse';
 import { StatusMessageResponse } from '../../models/user/StatusMessageResponse';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +26,17 @@ export class SuperAdminService {
   }
   removeRole(email: string, role: string) {
     return this.http.get<StatusMessageResponse>(`${this.baseUrl}/remove-role`, { params: { email: email, role: role } });
+  }
+  getCount(): Observable<number>{
+    return this.http.get<number>(`${this.baseUrl}/count/users`);
+  }
+  getCountDev(): Observable<number>{
+    return this.http.get<number>(`${this.baseUrl}/count/Developers`);
+  }
+  getCountManager(): Observable<number>{
+    return this.http.get<number>(`${this.baseUrl}/count/Project_Manager`);
+  }
+  getCountSuperAdmis(): Observable<number>{
+    return this.http.get<number>(`${this.baseUrl}/count/Super_admin`);
   }
 }

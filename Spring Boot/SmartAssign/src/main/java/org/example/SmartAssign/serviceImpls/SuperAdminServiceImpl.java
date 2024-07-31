@@ -107,4 +107,24 @@ public class SuperAdminServiceImpl implements ISuperAdminService {
         userRepository.save(user);
         return ResponseEntity.ok(new StatusMessageResponse("Success", email +" is no longer assigned role "+role));
     }
+
+    @Override
+    public Long GetNumberOfusers() {
+        return userRepository.count();
+    }
+
+    @Override
+    public Long GetNumberOfDevelopers() {
+        return userRepository.findAByRoles(Role.DEVLOPER).stream().count();
+    }
+
+    @Override
+    public Long GetNumberOfPROJECT_MANAGERS() {
+        return userRepository.findAByRoles(Role.PROJECT_MANAGER).stream().count();
+    }
+
+    @Override
+    public Long GetNumberOfSuper_admin() {
+        return userRepository.findAByRoles(Role.SUPERADMIN).stream().count();
+    }
 }
