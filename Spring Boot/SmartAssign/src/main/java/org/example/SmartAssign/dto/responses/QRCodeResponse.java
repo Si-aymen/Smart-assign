@@ -1,4 +1,4 @@
-package org.example.SmartAssign.dto.responses;
+package org.example.courzelo.dto.responses;
 
 import lombok.Data;
 

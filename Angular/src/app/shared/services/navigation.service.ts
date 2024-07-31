@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import {SessionStorageService} from './user/session-storage.service';
 
 
 export interface IMenuItem {
@@ -65,17 +64,17 @@ export class NavigationService {
                 { icon: 'i-Clock-4', name: 'Version 2', state: '/dashboard/v2', type: 'link' },
                 { icon: 'i-Over-Time', name: 'Version 3', state: '/dashboard/v3', type: 'link' },
                 { icon: 'i-Clock', name: 'Version 4', state: '/dashboard/v4', type: 'link' },
+                { icon: 'i-Administrator', name: 'Users Dashboard', state: '/dashboard/UserDashboard', type: 'link' }
             ]
         },
-                {
+        {
             name: 'Tools',
             description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
             type: 'dropDown',
             icon: 'i-Administrator',
             sub: [
-                { icon: 'i-Administrator', name: 'Super admin tools', state: '/tools/superadmin', type: 'link' , roles: ['SUPERADMIN']}
+                { icon: 'i-Administrator', name: 'Super admin tools', state: '/tools/superadmin', type: 'link' }
             ],
-            roles: ['SUPERADMIN']
         },
         {
             name: 'UI kits',
