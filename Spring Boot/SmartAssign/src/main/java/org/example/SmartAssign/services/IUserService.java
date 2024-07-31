@@ -3,7 +3,6 @@ package org.example.SmartAssign.services;
 import org.example.SmartAssign.dto.requests.ProfileInformationRequest;
 import org.example.SmartAssign.dto.requests.UpdatePasswordRequest;
 import org.example.SmartAssign.dto.responses.LoginResponse;
-import org.example.SmartAssign.dto.responses.QRCodeResponse;
 import org.example.SmartAssign.dto.responses.StatusMessageResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -27,7 +26,6 @@ UserDetails loadUserByEmail(String email);
     ResponseEntity<LoginResponse> getUserProfile(String email);
 
     ResponseEntity<StatusMessageResponse> updatePassword(UpdatePasswordRequest updatePasswordRequest, Principal principal);
-    ResponseEntity<QRCodeResponse> generateTwoFactorAuthQrCode(String email);
     ResponseEntity<StatusMessageResponse> enableTwoFactorAuth(String email,String verificationCode);
     ResponseEntity<StatusMessageResponse> disableTwoFactorAuth(String email);
     boolean verifyTwoFactorAuth(String email, int verificationCode);

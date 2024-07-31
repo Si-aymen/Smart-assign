@@ -7,8 +7,6 @@ const routes: Routes = [
   {
     path: 'superadmin',
     component: SuperAdminComponent,
-    canActivate: [AuthGuard],
-    data: { roles: ['SUPERADMIN'] }
   }
 ];
 

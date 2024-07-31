@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.example.SmartAssign.dto.requests.ProfileInformationRequest;
 import org.example.SmartAssign.dto.requests.UpdatePasswordRequest;
 import org.example.SmartAssign.dto.responses.LoginResponse;
-import org.example.SmartAssign.dto.responses.QRCodeResponse;
+
 import org.example.SmartAssign.dto.responses.StatusMessageResponse;
 import org.example.SmartAssign.dto.responses.UserResponse;
 import org.example.SmartAssign.models.User;
@@ -192,35 +192,7 @@ public class UserServiceImpl implements UserDetailsService, IUserService {
         userRepository.save(user);
         return ResponseEntity.ok(new StatusMessageResponse("success", "Password updated successfully"));
     }
-    @Override
-    public ResponseEntity<QRCodeResponse> generateTwoFactorAuthQrCode(String email) {
-        User user = userRepository.findUserByEmail(email);
-        GoogleAuthenticator gAuth = new GoogleAuthenticator();
-        final GoogleAuthenticatorKey key = gAuth.createCredentials();
 
-        user.getSecurity().setTwoFactorAuthKey(key.getKey());
-        userRepository.save(user);
-
-        String qrCodeData = "otpauth://totp/" + email + "?secret=" + key.getKey() + "&issuer=Courzelo";
-        byte[] qrCodeImage;
-        try {
-            qrCodeImage = generateQRCodeImage(qrCodeData, 200, 200);
-        } catch (WriterException | IOException e) {
-            throw new RuntimeException("Could not generate QR code", e);
-        }
-        String qrCodeImageBase64 = Base64.getEncoder().encodeToString(qrCodeImage);
-        return ResponseEntity.ok(new QRCodeResponse("success", "QR code generated successfully", qrCodeImageBase64));
-    }
-    public byte[] generateQRCodeImage(String text, int width, int height) throws WriterException, IOException {
-        QRCodeWriter qrCodeWriter = new QRCodeWriter();
-        Map<EncodeHintType, ErrorCorrectionLevel> hints = new HashMap<>();
-        hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
-        BitMatrix bitMatrix = qrCodeWriter.encode(text, BarcodeFormat.QR_CODE, width, height, hints);
-
-        ByteArrayOutputStream pngOutputStream = new ByteArrayOutputStream();
-        MatrixToImageWriter.writeToStream(bitMatrix, "PNG", pngOutputStream);
-        return pngOutputStream.toByteArray();
-    }
     @Override
     public ResponseEntity<StatusMessageResponse> enableTwoFactorAuth(String email,String verificationCode){
         User user = userRepository.findUserByEmail(email);

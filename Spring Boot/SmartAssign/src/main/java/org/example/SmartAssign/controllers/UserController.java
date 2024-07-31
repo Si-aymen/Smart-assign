@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import org.example.SmartAssign.dto.requests.ProfileInformationRequest;
 import org.example.SmartAssign.dto.requests.UpdatePasswordRequest;
 import org.example.SmartAssign.dto.responses.LoginResponse;
-import org.example.SmartAssign.dto.responses.QRCodeResponse;
 import org.example.SmartAssign.dto.responses.StatusMessageResponse;
 import org.example.SmartAssign.services.IUserService;
 import org.springframework.http.ResponseEntity;
@@ -42,10 +41,7 @@ public class UserController {
     public ResponseEntity<StatusMessageResponse> updatePassword(@RequestBody UpdatePasswordRequest updatePasswordRequest , Principal principal) {
         return userService.updatePassword(updatePasswordRequest, principal);
     }
-    @GetMapping("/qrCode")
-    public ResponseEntity<QRCodeResponse> generateTwoFactorAuthQrCode(Principal principal) {
-        return userService.generateTwoFactorAuthQrCode(principal.getName());
-    }
+
     @PostMapping("/enableTwoFactorAuth")
     public ResponseEntity<StatusMessageResponse> enableTwoFactorAuth(@RequestParam String verificationCode,Principal principal) {
         return userService.enableTwoFactorAuth(principal.getName(), verificationCode);

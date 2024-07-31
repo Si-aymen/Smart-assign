@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {ProductService} from '../../../shared/services/product.service';
 import {SuperAdminService} from '../../../shared/services/user/super-admin.service';
 import {PaginatedUsersResponse} from '../../../shared/models/user/PaginatedUsersResponse';
 import {UserResponse} from '../../../shared/models/user/UserResponse';
@@ -20,7 +19,7 @@ export class SuperAdminComponent implements OnInit {
   itemsPerPage = 5;
   loading = false;
   selectedRole = '';
-  availableRoles: string[] = ['SUPERADMIN', 'ADMIN', 'STUDENT', 'TEACHER'];
+  availableRoles: string[] = ['SUPERADMIN', 'ADMIN', 'DEVLOPER', 'PROJECT_MANAGER'];
   searchControl: FormControl = new FormControl();
 
   get currentPage(): number {
