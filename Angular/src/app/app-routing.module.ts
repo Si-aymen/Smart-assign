@@ -62,6 +62,7 @@ const adminRoutes: Routes = [
       path: 'projects',
       loadChildren: () => import('./views/projects/projects.module').then(m => m.ProjectsModule)
     }
+
   ];
 
 const routes: Routes = [

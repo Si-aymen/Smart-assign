@@ -8,7 +8,7 @@ import { Projects } from '../../models/Projects/projects';
   providedIn: 'root'
 })
 export class ProjectsService {
-  private baseUrl = 'http://localhost:8089/api/stages';
+  private baseUrl = 'http://localhost:8089/api/Projects';
 
   constructor(private http: HttpClient, private sanitizer: DomSanitizer) { }
 

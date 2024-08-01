@@ -42,6 +42,16 @@ export class ProjectsComponent {
     });
   }
 
+  onSubmit(): void {
+    if (this.projectForm.valid) {
+      const newTransport: Projects = this.projectForm.value;
+      this.projectService.register(newTransport);
+      this.loadProjects();
+    } else {
+      alert('Please fill in all required fields.');
+    }
+  }
+
 
 
 }
