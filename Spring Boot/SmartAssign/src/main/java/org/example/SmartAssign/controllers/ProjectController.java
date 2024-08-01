@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/Projects")
 @AllArgsConstructor
-@PreAuthorize("permitAll()")
+@PreAuthorize("hasRole('SUPERADMIN')")
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowedHeaders = "*", allowCredentials = "true")
 public class ProjectController {
     IProjectService projectService;

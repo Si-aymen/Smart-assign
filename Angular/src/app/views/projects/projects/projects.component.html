@@ -1,1 +1,142 @@
 <p>projects works!</p>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card o-hidden mb-4">
+            <ngx-datatable style="height: calc(100vh - 270px); box-shadow: none" class="material fullscreen"
+                [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="60" [scrollbarV]="true"
+                [limit]="10" [rows]="projects$ | async">
+                <ngx-datatable-column name="photo" [maxWidth]="50">
+                    <ng-template ngx-datatable-header-template> Icon </ng-template>
+                    <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+                        <i class="i-Jeep"></i>
+                    </ng-template>
+                </ngx-datatable-column>
+
+                <ngx-datatable-column name="id" [maxWidth]="60">
+                    <ng-template ngx-datatable-header-template> id </ng-template>
+                    <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+                        {{ row.id }}
+                    </ng-template>
+                </ngx-datatable-column>
+
+                <ngx-datatable-column name="name" [maxWidth]="60">
+                    <ng-template ngx-datatable-header-template> name </ng-template>
+                    <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+                        {{ row.name }}
+                    </ng-template>
+                </ngx-datatable-column>
+
+                <ngx-datatable-column name="description">
+                    <ng-template ngx-datatable-header-template> description </ng-template>
+                    <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+                        {{ row.description }}
+                    </ng-template>
+                </ngx-datatable-column>
+
+
+                <ngx-datatable-column name="status" [maxWidth]="100">
+                    <ng-template ngx-datatable-header-template> Status </ng-template>
+                    <ng-template ngx-datatable-cell-template let-row="row">
+                        <span class="badge badge-pill px-3 py-1" [ngClass]="{
+                'badge-success':
+                  row.status === 'ACTIF' ,
+                'badge-warning':
+                  row.status === 'IN_PROGRESS' || row.status === 'PAUSED',
+                'badge-danger':
+                  row.status === 'NOT_SUBMITTED' || row.status === 'CANNCELED'
+              }">
+                            {{ row.status }}
+                        </span>
+                    </ng-template>
+                </ngx-datatable-column>
+
+                <ngx-datatable-column name="startDate" [maxWidth]="60">
+                    <ng-template ngx-datatable-header-template> startDate </ng-template>
+                    <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+                        {{ row.startDate }}
+                    </ng-template>
+                </ngx-datatable-column>
+
+
+                <ngx-datatable-column name="endDate" [maxWidth]="60">
+                    <ng-template ngx-datatable-header-template> endDate </ng-template>
+                    <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+                        {{ row.endDate }}
+                    </ng-template>
+                </ngx-datatable-column>
+
+
+                <ngx-datatable-column name="domain" [maxWidth]="60">
+                    <ng-template ngx-datatable-header-template> domain </ng-template>
+                    <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+                        {{ row.domain }}
+                    </ng-template>
+                </ngx-datatable-column>
+
+                <ngx-datatable-column name="Actions" [width]="210">
+                    <ng-template ngx-datatable-header-template> Actions </ng-template>
+                    <ng-template ngx-datatable-cell-template let-row="row">
+                        <button class="btn btn-primary mr-2" (click)="view(row.id)">
+                            View
+                        </button>
+                        <button class="btn btn-warning mr-2" (click)="edit(row)">
+                            Edit
+                        </button>
+                        <button class="btn btn-danger" (click)="delete(row.id)">Delete</button>
+                    </ng-template>
+                </ngx-datatable-column>
+            </ngx-datatable>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="name">name</label>
+                    <input type="text" id="name" formControlName="name" class="form-control" required />
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="description">description</label>
+                    <input type="text" id="description" formControlName="description" class="form-control" required />
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="status">status</label>
+                    <select id="status" formControlName="status" class="form-control form-control-rounded">
+                        <option value="" disabled selected>Select status</option>
+                        <option value="ACTIF">Actif</option>
+                        <option value="PAUSED">Paused</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="domain">domain</label>
+                    <select id="domain" formControlName="domain" class="form-control form-control-rounded">
+                        <option value="" disabled selected>Select domain</option>
+                        <option value="IT">IT</option>
+                        <option value="RX">RX</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="startDate">Start date and time </label>
+                    <input type="datetime-local" id="startDate" formControlName="startDate" class="form-control"
+                        required />
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="endDate">End date and time</label>
+                    <input type="datetime-local" id="endDate" formControlName="endDate" class="form-control" required />
+                </div>
+
+
+
+            </div>
+            <button type="submit" class="btn btn-primary">Add Project </button>
+        </form>
+    </div>
+</div>

@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.example.SmartAssign.models.Project;
 import org.example.SmartAssign.repositories.ProjectRepository;
 import org.example.SmartAssign.services.IProjectService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,7 +12,8 @@ import java.util.List;
 @Slf4j
 public class ProjectService implements IProjectService {
 
-    private  ProjectRepository projectRepository;
+    @Autowired
+    private ProjectRepository projectRepository;
 
     @Override
     public List<Project> retrieveAllProjects() {

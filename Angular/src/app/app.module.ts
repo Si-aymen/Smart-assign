@@ -9,7 +9,6 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './shared/inmemory-db/inmemory-db.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {Interceptor} from './shared/services/user/Interceptor';
-import { UserDashboardComponent } from './views/dashboard/user-dashboard/user-dashboard.component';
 
 
 @NgModule({

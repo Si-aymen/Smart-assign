@@ -77,6 +77,15 @@ export class NavigationService {
             ],
         },
         {
+            name: 'Projects',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+            type: 'dropDown',
+            icon: 'i-Folders',
+            sub: [
+                { icon: 'i-Folder-Cloud', name: 'All Projects ', state: '/projects/AllProjects', type: 'link' }
+            ],
+        },
+        {
             name: 'UI kits',
             description: 'Lorem ipsum dolor sit amet, consectetur adipisicing.',
             type: 'dropDown',

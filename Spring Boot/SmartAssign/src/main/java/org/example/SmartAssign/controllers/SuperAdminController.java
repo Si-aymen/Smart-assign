@@ -53,6 +53,7 @@ public class SuperAdminController {
     public Long GetNumberOfProjectManager() {
         return superAdminService.GetNumberOfPROJECT_MANAGERS();
     }
+
     @GetMapping("/count/Super_admin")
     public Long GetNumberOfSuperAdmin() {
         return superAdminService.GetNumberOfSuper_admin();
