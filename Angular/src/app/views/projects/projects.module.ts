@@ -10,10 +10,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProjectsComponent } from './projects/projects.component';
 import { AppFormsModule } from '../forms/forms.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProjectDetailsComponent } from './project-details/project-details.component';
 
 
 @NgModule({
-  declarations: [ProjectsComponent],
+  declarations: [ProjectsComponent,ProjectDetailsComponent],
   imports: [
     CommonModule,
     SharedComponentsModule,

@@ -1,0 +1,58 @@
+<div class="row">
+    <!-- Project Progress and List Side by Side -->
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="card-title">Project Progress</div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <table class="table">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">Tasks</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Done</td>
+                                    <td class="font-weight-bold text-success">14</td>
+                                </tr>
+                                <tr>
+                                    <td>In progress</td>
+                                    <td class="font-weight-bold">15</td>
+                                </tr>
+                                <tr>
+                                    <td>To Do</td>
+                                    <td class="text-danger font-weight-bold">112</td>
+                                </tr>
+                                <tr>
+                                    <td>Optional</td>
+                                    <td class="text-warning font-weight-bold">23</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <div echarts [options]="chartPie1" [autoResize]="true" style="height: 200px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- List Section -->
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="breadcrumb">
+                    <h1>Project Name</h1>
+                    <ul>
+                        <li><a href="">Tasks List</a></li>
+                        <li>List</li>
+                    </ul>
+                </div>
+                <!-- Add your list content here -->
+            </div>
+        </div>
+    </div>
