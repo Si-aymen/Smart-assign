@@ -51,4 +51,16 @@ public class UserController {
      return   userService.disableTwoFactorAuth(principal.getName());
     }
 
+    @PostMapping("/{email}/skills")
+    public ResponseEntity<StatusMessageResponse> addSkillToUser(
+            @PathVariable String email,
+            @RequestParam String skill) {
+        return userService.addSkill(email, skill);
+    }
+
+    @GetMapping("/{email}/skills")
+    public ResponseEntity<?> getUserSkills(@PathVariable String email) {
+        return userService.getSkills(email);
+    }
+
 }

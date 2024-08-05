@@ -1,17 +1,23 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, Validators} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
 import {ProfileInformationRequest} from '../../../shared/models/user/requests/ProfileInformationRequest';
 import {UserService} from '../../../shared/services/user/user.service';
 import {SessionStorageService} from '../../../shared/services/user/session-storage.service';
 import {UserResponse} from '../../../shared/models/user/UserResponse';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import { StatusMessageResponse } from 'src/app/shared/models/user/StatusMessageResponse';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+
+
+  skills: string[] = [];
+  user: UserResponse;
+ 
 
   constructor(
       private formBuilder: FormBuilder,
@@ -35,6 +41,7 @@ export class ProfileComponent implements OnInit {
   birthDate: NgbDateStruct;
 
   ngOnInit() {
+    this.getUserSkills();
     const date = new Date(this.connectedUser.profile.birthDate);
     this.birthDate = {
       year: date.getFullYear(),
@@ -111,5 +118,44 @@ export class ProfileComponent implements OnInit {
           }
       );
     }
+  }
+  getUserSkills() {
+    this.user = this.sessionStorageService.getUser();
+  
+    this.userService.getUserSkills(this.user.email).subscribe(
+      (res: any) => {
+        this.skills = res; // Assuming the API returns the skills directly
+        this.toastr.success('Skills retrieved successfully', 'Success!', { progressBar: true });
+        console.log("skills "+ this.skills);
+      },
+      (error) => {
+        this.handleErrorResponse(error);
+      }
+    );
+  }
+
+  onAddItem(item: string): void {
+    if (!this.skills.includes(item)) {
+     // this.userInterests.push(item);
+    }
+    console.log('Current interests:', this.skills);
+  }
+
+
+  addSkill(event: any) {
+    const skill = event.value;
+    this.userService.addSkillToUser(this.user.email, skill).subscribe(
+      (response: StatusMessageResponse) => {
+        this.toastr.success(response.message, 'Success!', { progressBar: true });
+      },
+      (error) => {
+        this.handleErrorResponse(error);
+      }
+    );
+  }
+  onRemoveItem(item: string): void {
+    console.log('Removed item:', item);
+    this.skills = this.skills.filter(interest => interest !== item);
+    console.log('Current skills :', this.skills);
   }
 }

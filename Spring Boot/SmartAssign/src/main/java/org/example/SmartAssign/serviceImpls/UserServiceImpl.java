@@ -21,6 +21,7 @@ import org.example.SmartAssign.models.UserProfile;
 import org.example.SmartAssign.repositories.UserRepository;
 import org.example.SmartAssign.services.IUserService;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -227,6 +228,39 @@ public class UserServiceImpl implements UserDetailsService, IUserService {
             log.warn("Invalid TFA code {} for user: {}", verificationCode ,email);
         }
         return isCodeValid;
+    }
+
+    @Override
+    public ResponseEntity<StatusMessageResponse> addSkill(String email, String skill) {
+        User user = userRepository.findUserByEmail(email);
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(new StatusMessageResponse("error", "User not found"));
+        }
+
+        String skillUpper = skill.toUpperCase();
+        boolean added = user.getProfile().getSkills().add(skillUpper);
+        if (!added) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(new StatusMessageResponse("error", "Skill already exists"));
+        }
+
+        userRepository.save(user);
+        return ResponseEntity.ok(new StatusMessageResponse("success", "Skill added to user"));
+    }
+
+    public ResponseEntity<?> getSkills(String email) {
+        User user = userRepository.findUserByEmail(email);
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(new StatusMessageResponse("error", "User not found"));
+        }
+
+        if (user.getProfile() == null || user.getProfile().getSkills() == null) {
+            return ResponseEntity.ok(Collections.emptySet());
+        }
+
+        return ResponseEntity.ok(user.getProfile().getSkills());
     }
 
 
