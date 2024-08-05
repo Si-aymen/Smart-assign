@@ -115,7 +115,7 @@
                 <h5 class="card-title">User Skills</h5>
                 <tag-input [(ngModel)]="skills" [modelAsStrings]="true" [addOnBlur]="true" [addOnPaste]="true"
                     [separatorKeyCodes]="[13, 188]" placeholder="Add skills" secondaryPlaceholder="Enter Skills"
-                    (onAdd)="addSkill($event)" (onRemove)="onRemoveItem($event)" theme='primary'>
+                    (onAdd)="addSkill($event)" (onRemove)="removeSkill($event)" theme='primary'>
                 </tag-input>
             </div>
         </div>

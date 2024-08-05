@@ -63,4 +63,11 @@ public class UserController {
         return userService.getSkills(email);
     }
 
+    @DeleteMapping("/{email}/skills")
+    public ResponseEntity<?> removeSkillFromUser(
+            @PathVariable String email,
+            @RequestParam String skill) {
+        return userService.removeSkill(email, skill);
+    }
+
 }

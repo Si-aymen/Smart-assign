@@ -84,4 +84,11 @@ export class UserService {
     );
   }
 
+  deleteUserSkill(email: string, skill: string): Observable<StatusMessageResponse> {
+    return this.http.delete<StatusMessageResponse>(
+      `${this.baseUrl}/${email}/skills`,
+      { params: { skill: skill } }
+    );
+  }
+
 }
