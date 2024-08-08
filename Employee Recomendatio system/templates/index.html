@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Recommendation</title>
+</head>
+<body>
+    <h1>Employee Recommendation System</h1>
+    <form method="POST">
+        <label for="skills">Select Skills:</label>
+        <select id="skills" name="skills" multiple>
+            {% for skill in skills_list %}
+            <option value="{{ skill }}">{{ skill }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Recommend</button>
+    </form>
+
+    {% if recommended_employees %}
+    <h2>Recommended Employees:</h2>
+    <ul>
+        {% for employee in recommended_employees %}
+        <li>{{ employee['profile']['name'] }} {{ employee['profile']['lastname'] }} - Skills: {{ employee['profile']['skills'] }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+</html>
