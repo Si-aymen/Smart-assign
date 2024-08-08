@@ -61,6 +61,10 @@ const adminRoutes: Routes = [
     {
       path: 'projects',
       loadChildren: () => import('./views/projects/projects.module').then(m => m.ProjectsModule)
+    },
+    {
+      path: 'tasks',
+      loadChildren: () => import('./views/task/task.module').then(m => m.TaskModule)
     }
 
   ];

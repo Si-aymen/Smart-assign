@@ -15,4 +15,6 @@ public interface ITaskService {
     public void removeTask(String TaskID);
 
     public Task modifyTask(Task Task);
+    public void AssignTaskToProject(String projectID, String TaskID);
+    public void AssignNewTaskToProject(String projectID, Task Task);
 }

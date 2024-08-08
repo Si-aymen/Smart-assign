@@ -27,5 +27,9 @@ export class ProjectsService {
       });
   }
 
+  getProjectByID(id:string) : Observable<Projects> {
+    return this.http.get<Projects>(`${this.baseUrl}/GetByID/${id}`);
+  }
+
 
 }
