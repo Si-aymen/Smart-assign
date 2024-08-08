@@ -29,4 +29,8 @@ UserDetails loadUserByEmail(String email);
     ResponseEntity<StatusMessageResponse> enableTwoFactorAuth(String email,String verificationCode);
     ResponseEntity<StatusMessageResponse> disableTwoFactorAuth(String email);
     boolean verifyTwoFactorAuth(String email, int verificationCode);
+
+    public  ResponseEntity<StatusMessageResponse> addSkill(String email, String skill);
+    public ResponseEntity<?> getSkills(String email) ;
+    public ResponseEntity<?> removeSkill(String email, String skill);
 }

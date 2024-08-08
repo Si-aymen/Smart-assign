@@ -3,6 +3,7 @@ import { ProjectsService } from 'src/app/shared/services/Projects/projects.servi
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Projects } from 'src/app/shared/models/Projects/projects';
 import { of } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-projects',
@@ -14,7 +15,8 @@ export class ProjectsComponent {
   projects$:any ;
 
   constructor(
-    private projectService: ProjectsService
+    private projectService: ProjectsService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -52,6 +54,7 @@ export class ProjectsComponent {
     }
   }
 
-
-
+  view(id: any) {
+    this.router.navigate(['/projects/details', id])
+  }
 }

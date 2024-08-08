@@ -28,6 +28,15 @@ export class HeaderSidebarCompactComponent implements OnInit {
     this.notifications = [
       {
         icon: 'i-Speach-Bubble-6',
+        title: 'New Project',
+        badge: '1',
+        text: 'Aymen : Hey! you have new task ?',
+        time: new Date(),
+        status: 'primary',
+        link: '/projects/AllProjects'
+      },
+      {
+        icon: 'i-Speach-Bubble-6',
         title: 'New message',
         badge: '3',
         text: 'James: Hey! are you busy?',

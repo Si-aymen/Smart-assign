@@ -4,7 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -18,4 +20,6 @@ public class UserProfile {
     private Date birthDate;
     private String title;
     private String bio;
+
+    private List<String> skills = new ArrayList<>();
 }
