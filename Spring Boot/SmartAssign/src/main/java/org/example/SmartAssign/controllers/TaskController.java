@@ -26,6 +26,11 @@ public class TaskController {
     public Task getTask(@PathVariable("Task-id") String TaskID) {
         return taskService.retrieveTask(TaskID) ;
     }
+    @GetMapping("/GetAllByProject")
+    public List<Task> getTasksByProject(@RequestParam(value = "project", required = true)String project){
+        return taskService.retrieveAllTasksForProject(project) ;
+
+    }
 
     @PostMapping("/add-Task")
     public Task addTask(@RequestBody Task Task) {

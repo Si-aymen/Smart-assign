@@ -61,10 +61,15 @@ public class TaskService implements ITaskService {
     public void AssignNewTaskToProject(String projectID, Task task) {
         Project project = projectRepository.findById(projectID)
                 .orElseThrow(() -> new IllegalArgumentException("Project not found with ID: " + projectID));
+        task.setProjectID(projectID);
         taskRepository.save(task);
         project.getTasks().add(task);
-        project.getTasks().add(task);
         projectRepository.save(project);
+    }
+
+    @Override
+    public List<Task> retrieveAllTasksForProject(String projectID) {
+        return taskRepository.findAllByProjectID(projectID);
     }
 
 }
