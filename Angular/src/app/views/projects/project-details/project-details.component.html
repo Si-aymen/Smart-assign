@@ -3,7 +3,7 @@
     <div class="col-md-6">
         <div class="card mb-4">
             <div class="card-body">
-                <div class="card-title">Project Progress</div>
+                <div class="card-title">{{ CurrentProject.name}} Progress</div>
                 <div class="row">
                     <div class="col-md-6">
                         <table class="table">
@@ -41,18 +41,26 @@
         </div>
     </div>
 
-    <!-- List Section -->
-    <div class="col-md-6">
-        <div class="card mb-4">
-            <div class="card-body">
-                <div class="breadcrumb">
-                    <h1>Project Name</h1>
-                    <ul>
-                        <li><a href="">Tasks List</a></li>
-                        <li>List</li>
-                    </ul>
+<!-- List Section -->
+<div class="col-md-6">
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="breadcrumb">
+                <h1>Project : {{ CurrentProject.name}}</h1>
+                <ul>
+                    <li><a href="#">Tasks List</a></li>
+                    <li>List</li>
+                </ul>
+                <div>
+                    <br>
+                    <button class="btn btn-warning mr-2" (click)="AddTask()">
+                        Add Task to this project 
+                    </button>
                 </div>
-                <!-- Add your list content here -->
+
             </div>
+
+            <!-- Add your list content here -->
         </div>
     </div>
+</div>

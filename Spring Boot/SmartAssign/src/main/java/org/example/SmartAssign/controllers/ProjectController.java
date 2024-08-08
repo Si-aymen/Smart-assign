@@ -3,6 +3,7 @@ package org.example.SmartAssign.controllers;
 import lombok.AllArgsConstructor;
 import org.example.SmartAssign.models.Project;
 import org.example.SmartAssign.services.IProjectService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,14 +18,14 @@ public class ProjectController {
     IProjectService projectService;
 
     @GetMapping("/GetAll/Projects")
-    public Project getProjects(@PathVariable("project-id") String projectID) {
-        return projectService.retrieveProject(projectID) ;
+    public List<Project> getProjects() {
+        return projectService.retrieveAllProjects();
 
     }
 
     @GetMapping("/GetByID/{project-id}")
-    public List<Project> getProject() {
-        return projectService.retrieveAllProjects();
+    public Project getProject(@PathVariable("project-id") String projectID) {
+        return projectService.retrieveProject(projectID);
 
     }
 
@@ -38,6 +39,8 @@ public class ProjectController {
     public void removeTransports(@PathVariable("project-id") String projectID) {
         projectService.removeProject(projectID);
     }
+
+
 
 
 }

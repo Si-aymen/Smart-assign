@@ -2,9 +2,12 @@ package org.example.SmartAssign.models;
 
 
 import lombok.*;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -20,5 +23,8 @@ public class Project {
     private Status status  ;
     private Date startDate;
     private Date endDate;
+
+    @DBRef
+    private List<Task> tasks =new ArrayList<Task>();
 
 }
