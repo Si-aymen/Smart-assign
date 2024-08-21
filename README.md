@@ -65,7 +65,7 @@ SmartAssign aims to:
 
 - Spring Boot
 - Angular
-- JavaScript
+- Flask
 
 ---
 
