@@ -18,6 +18,9 @@ collection = db[collection_name]
 # Load the employee data from MongoDB
 employees = list(collection.find())
 
+# Extract the list of skills that already exist in the database
+skills_set = set(skill for emp in employees for skill in emp['profile']['skills'])
+
 # Function to recommend employees based on skills
 def recommend_employees(desired_skills, top_n=5):
     def calculate_match_score(employee_skills, desired_skills):
@@ -43,11 +46,9 @@ def index():
     selected_skills = None
 
     if request.method == 'POST':
+        # Retrieve selected skills from the form (can select multiple)
         selected_skills = request.form.getlist('skills')
         recommended_employees = recommend_employees(selected_skills)
-
-    # Extract the list of skills for the UI (can be optimized or customized)
-    skills_set = set(skill for emp in employees for skill in emp['profile']['skills'])
 
     return render_template('index.html', skills_list=skills_set, selected_skills=selected_skills, recommended_employees=recommended_employees)
 

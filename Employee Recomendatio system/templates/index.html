@@ -6,24 +6,23 @@
     <title>Employee Recommendation</title>
 </head>
 <body>
-    <h1>Employee Recommendation System</h1>
+    <h1>Recommend Employees</h1>
+    
     <form method="POST">
-        <label for="skills">Select Skills:</label>
-        <select id="skills" name="skills" multiple>
-            {% for skill in skills_list %}
-            <option value="{{ skill }}">{{ skill }}</option>
-            {% endfor %}
-        </select>
-        <button type="submit">Recommend</button>
+        <label for="skills">Select Skills:</label><br>
+        {% for skill in skills_list %}
+            <input type="checkbox" name="skills" value="{{ skill }}" id="skill_{{ loop.index }}" {% if selected_skills and skill in selected_skills %}checked{% endif %}>
+            <label for="skill_{{ loop.index }}">{{ skill }}</label><br>
+        {% endfor %}
+        <br>
+        <input type="submit" value="Recommend">
     </form>
 
-    {% if recommended_employees %}
     <h2>Recommended Employees:</h2>
     <ul>
         {% for employee in recommended_employees %}
-        <li>{{ employee['profile']['name'] }} {{ employee['profile']['lastname'] }} - Skills: {{ employee['profile']['skills'] }}</li>
+            <li>{{ employee['profile']['name'] }} {{ employee['profile']['lastname'] }} - Skills: {{ ', '.join(employee['profile']['skills']) }}</li>
         {% endfor %}
     </ul>
-    {% endif %}
 </body>
 </html>
