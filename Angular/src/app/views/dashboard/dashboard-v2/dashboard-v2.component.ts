@@ -32,7 +32,7 @@ export class DashboardV2Component implements OnInit {
 						name: 'Completed',
 						value: 80,
 						itemStyle: {
-							color: '#663399',
+							color: '#2323FF',
 						}
 					}, {
 						name: 'Pending',
