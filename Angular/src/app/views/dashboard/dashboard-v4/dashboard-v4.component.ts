@@ -52,7 +52,7 @@ export class DashboardV4Component implements OnInit {
 						color: 'rgba(102, 51, 153, 0.68)',
 					},
 					itemStyle: {
-						color: '#663399'
+						color: '#2323FF'
 					}
 				}, {
 					data: [20, 80, 40, 90, 20, 80, 30, 90, 30, 80, 10, 70, 30],

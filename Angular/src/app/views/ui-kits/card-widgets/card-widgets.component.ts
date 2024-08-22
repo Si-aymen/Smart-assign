@@ -29,10 +29,10 @@ export class CardWidgetsComponent implements OnInit {
           origin: 'start'
         },
         lineStyle: {
-          color: '#663399',
+          color: '#2323FF',
         },
         itemStyle: {
-          color: '#663399'
+          color: '#2323FF'
         }
       }]
     }};

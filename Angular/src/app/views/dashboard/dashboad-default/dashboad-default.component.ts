@@ -32,10 +32,10 @@ export class DashboadDefaultComponent implements OnInit {
 						origin: 'start'
 					},
 					lineStyle: {
-						color: '#663399',
+						color: '#2323FF',
 					},
 					itemStyle: {
-						color: '#663399'
+						color: '#2323FF'
 					}
 				}]
 			}
@@ -55,10 +55,10 @@ export class DashboadDefaultComponent implements OnInit {
 						origin: 'start'
 					},
 					lineStyle: {
-						color: '#FFC107'
+						color: '#860202'
 					},
 					itemStyle: {
-						color: '#FFC107'
+						color: '#860202'
 					}
 				}]
 			}
@@ -148,7 +148,7 @@ export class DashboadDefaultComponent implements OnInit {
                     data: [45000, 82000, 35000, 93000, 71000, 89000, 49000, 91000, 80200, 86000, 35000, 40050],
                     label: { show: false, color: '#639' },
                     type: 'bar',
-                    color: '#7569b3',
+                    color: '#1a0b6f',
                     smooth: true
                 }
 
@@ -156,7 +156,7 @@ export class DashboadDefaultComponent implements OnInit {
         };
 
         this.salesChartPie = {
-            color: ['#62549c', '#7566b5', '#7d6cbb', '#8877bd', '#9181bd', '#6957af'],
+            color: ['#1a0b6f', '#34239d', '#5c4ace', '#8181ed', '#130957', '#020236'],
             tooltip: {
                 show: true,
                 backgroundColor: 'rgba(0, 0, 0, .8)'

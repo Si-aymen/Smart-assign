@@ -19,4 +19,5 @@ public class Task {
     private String description;
     private Status status  ;
     private Date finishDate;
+    private String projectID ;
 }
