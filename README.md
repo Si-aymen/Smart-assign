@@ -1,6 +1,9 @@
 # SmartAssign
-
+[EN]
 SmartAssign is an intelligent task assignment platform designed to optimize resource allocation and improve project management efficiency.
+
+[FR]
+SmartAssign.Tn est une plateforme tunisienne spécialisée dans l'affectation automatique des tâches pour les entreprises, avec une gestion optimisée en temps réel. SmartAssign  garantit une répartition équitable, efficace et rapide des tâches entre les salariés. Pour aider les managers à prendre des décisions éclairées, SmartAssign affiche des informations détaillées sur la charge de travail actuelle, les compétences spécifiques et la performance de chaque employé.
 
 ## Table of Contents
 1. [Project Context](#project-context)
