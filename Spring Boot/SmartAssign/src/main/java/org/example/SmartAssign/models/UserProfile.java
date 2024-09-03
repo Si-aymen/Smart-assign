@@ -20,6 +20,7 @@ public class UserProfile {
     private Date birthDate;
     private String title;
     private String bio;
+    private float score ;
 
     private List<String> skills = new ArrayList<>();
 }
